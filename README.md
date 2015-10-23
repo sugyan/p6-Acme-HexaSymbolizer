@@ -1,7 +1,7 @@
 NAME
 ====
 
-Acme::HexaSymbolizer - translate to equivalent code which uses 6 kind symbols.
+Acme::HexaSymbolizer - Esoteric program generator.
 
 SYNOPSIS
 ========
@@ -13,6 +13,8 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
+
+Acme::HexaSymbolizer translates perl6 code to equivalent code which uses 6 kind symbols only.
 
     $ cat eg/hello.pl6
     ::((~::('~'~^~(^(''~~''))~':'~^~(^(''~~''))~^'~'~^'('~^')'~')'~^':'~^'~')(')'~^~(^(''~~''))~^'('~'^' ...
