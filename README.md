@@ -9,7 +9,7 @@ SYNOPSIS
     use Acme::HexaSymbolizer;
 
     my $code = q{say 'Hello, world!'};
-    say Acme::HexaSymbolizer.symbolize($code);
+    print Acme::HexaSymbolizer.symbolize($code);
 
 DESCRIPTION
 ===========
