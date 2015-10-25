@@ -1,7 +1,7 @@
 NAME
 ====
 
-Acme::HexaSymbolizer - Esoteric program generator.
+Acme::HexaSymbolizer - Esoteric program generator
 
 SYNOPSIS
 ========
