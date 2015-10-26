@@ -156,10 +156,9 @@ method symbolize(Str $code) {
             $_;
         }
         default {
-            '\x'~.ord.base(16);
+            '\x' ~ .ord.base(16);
         }
-    }).join;
-    # TODO escape some characters
+    }).join.subst(/ ([ \x22 || \x24 || \x25 || \x40 || \x7b || \x7d ]) /, { '\\' ~ $0 }, :g);
     my $main = self!encode(qq{"$encoded".EVAL});
     return "::({self!encode('&EVAL')})($main)"
 }
