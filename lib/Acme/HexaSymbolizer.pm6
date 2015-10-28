@@ -137,13 +137,17 @@ submethod BUILD() {
     );
     %!dict = (
         '0' => "(~(^(''~~'')))",
-        '1' => <(~(^(''~~''))) '(' ')'>.pick(*).join('~^'),
-        '4' => self!four,
+    );
+    for <1 2 N u m *> -> $k {
+        %!dict.push: $k => %h{$k}.pick(*).map({ %!dict{$_} // "'$_'" }).join('~^');
+    }
+    %!dict.push: '4' => '(~::(%s)(%s))'.sprintf(
+        'Num'.comb.map({ %!dict{$_} }).join('~'),
+        '1*2**2'.comb.map({ %!dict{$_} }).join('~'),
     );
     for %h.kv -> $k, $v {
-        unless %!dict{$k}:exists {
-            %!dict.push: $k => $v.pick(*).map({ %!dict{$_} // "'$_'" }).join('~^');
-        }
+        next if %!dict{$k}:exists;
+        %!dict.push: $k => $v.pick(*).map({ %!dict{$_} // "'$_'" }).join('~^');
     }
 }
 
@@ -165,24 +169,4 @@ method symbolize(Str $code) {
 
 method !encode(Str $str) {
     return $str.comb.map({ %!dict{$_} }).join('~');
-}
-
-method !four() {
-    my %h = (
-        '1' => <0 ( )>,
-        '2' => <^ : ~ (>,
-        'N' => <0 ~>,
-        'u' => <0 : ~ ( )>,
-        'm' => <) : ~>,
-        '*' => <0 ^ : ~>,
-    );
-    my %dict = (
-        '0' => "(~(^(''~~'')))",
-    );
-    for %h.kv -> $k, $v {
-        %dict.push: $k => $v.pick(*).map({ %dict{$_} // "'$_'" }).join('~^');
-    }
-    my $num = 'Num'.comb.map({ %dict{$_} }).join('~');
-    my $four = '1*2**2'.comb.map({ %dict{$_} }).join('~');
-    return "(~::({$num})({$four}))";
 }
