@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sugyan/p6-Acme-HexaSymbolizer.svg?branch=master)](https://travis-ci.org/sugyan/p6-Acme-HexaSymbolizer)
+
 NAME
 ====
 
