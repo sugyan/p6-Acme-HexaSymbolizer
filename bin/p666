@@ -1,0 +1,7 @@
+#!/usr/bin/env perl6
+use v6;
+use Acme::HexaSymbolizer;
+
+sub MAIN ($path) {
+    Acme::HexaSymbolizer.symbolize($path.IO.slurp).say
+}
